@@ -1,4 +1,4 @@
-var ApiActions = "../actions/pokemonActions.js";
+var ApiActions = require("../actions/pokemonActions.js");
 
 var Pokemons = {
   fetchAllPokemon: function(){
