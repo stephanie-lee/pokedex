@@ -1,0 +1,6 @@
+
+var CONSTANTS = {
+  POKEMONS_RECEIVED: "POKEMONS_RECEIVED"
+};
+
+module.exports = CONSTANTS;

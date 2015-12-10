@@ -1,13 +1,15 @@
-var Pokemon = {
+var ApiActions = "../actions/pokemonActions.js";
+
+var Pokemons = {
   fetchAllPokemon: function(){
     $.ajax({
       url: "api/pokemon",
       type: "GET",
-      success: function(pokemon){
-        console.log(pokemon);
+      success: function(pokemons){
+        ApiActions.receiveAllPokemons(pokemons);
       }
     });
   }
 };
 
-module.exports = Pokemon;
+module.exports = Pokemons;
