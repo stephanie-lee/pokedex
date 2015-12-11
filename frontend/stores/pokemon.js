@@ -9,7 +9,7 @@ window.PokemonStore = PokemonStore;
 
 PokemonStore.all = function () {
   var pokes = [];
-
+  // console.log( _pokemons);
   Object.keys(_pokemons).map(function (id) {
     pokes.push(_pokemons[id]);
   });
@@ -26,11 +26,14 @@ PokemonStore.__onDispatch = function(payload) {
   }
 };
 
+PokemonStore.find = function(id) {
+  return _pokemons[id];
+};
+
 var resetPokemons = function(pokemons) {
   _pokemons = {};
-
   pokemons.forEach(function(pokemon) {
-    _pokemons[pokemon["id"]] = pokemon;
+    _pokemons[pokemon.id] = pokemon;
   });
 
 };
