@@ -9,7 +9,6 @@ window.PokemonStore = PokemonStore;
 
 PokemonStore.all = function () {
   var pokes = [];
-  // console.log( _pokemons);
   Object.keys(_pokemons).map(function (id) {
     pokes.push(_pokemons[id]);
   });

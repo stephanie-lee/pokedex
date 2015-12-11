@@ -19,6 +19,11 @@ var PokemonDetail = React.createClass({
     PokemonStore.removeListener(this._onChange);
   },
 
+  componentWillReceiveProps: function(newProps) {
+    var pokemonId = parseInt(newProps.params.pokemonId);
+    this.setState({pokemon: PokemonStore.find(pokemonId)});
+  },
+
   _onChange: function() {
     this.setState({pokemon: this.getStateFromStore()});
   },

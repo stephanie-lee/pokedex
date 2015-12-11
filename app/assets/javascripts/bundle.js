@@ -20036,7 +20036,6 @@
 
 	PokemonStore.all = function () {
 	  var pokes = [];
-	  // console.log( _pokemons);
 	  Object.keys(_pokemons).map(function (id) {
 	    pokes.push(_pokemons[id]);
 	  });
@@ -26488,17 +26487,24 @@
 	var React = __webpack_require__(1);
 	var PokemonStore = __webpack_require__(166);
 	// var PokemonsIndex = require('./pokemonIndex.jsx');
+	var History = __webpack_require__(185).History;
 
 	var PokemonIndexItem = React.createClass({
 	  displayName: 'PokemonIndexItem',
 
+	  mixins: [History],
+	  handleClick: function () {
+	    var pokeUrl = "pokemon/" + this.props.pokemon.id;
+	    this.history.push(pokeUrl);
+	  },
+
 	  render: function () {
 	    return React.createElement(
 	      'li',
-	      { className: 'poke-list-item' },
+	      { className: 'poke-list-item', onClick: this.handleClick },
 	      'Name: ',
 	      this.props.pokemon.name,
-	      ' Type: ',
+	      'Type: ',
 	      this.props.pokemon.poke_type
 	    );
 	  }
@@ -31323,6 +31329,11 @@
 
 	  componentWillUnmount: function () {
 	    PokemonStore.removeListener(this._onChange);
+	  },
+
+	  componentWillReceiveProps: function (newProps) {
+	    var pokemonId = parseInt(newProps.params.pokemonId);
+	    this.setState({ pokemon: PokemonStore.find(pokemonId) });
 	  },
 
 	  _onChange: function () {
